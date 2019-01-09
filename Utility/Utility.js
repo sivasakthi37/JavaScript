@@ -2,9 +2,15 @@ const readline=require('readline-sync');
 
 
 module.exports ={
-
+    
+/**
+     *@purpose : To generate the Array 
+     *@description : this method is used to generate the number array of user choice elements
+                    and return the resultant array
+     * @param {empty array } arr 
+ */
 arrayinput(arr){
-var n=readline.question("Enter the size of the array");
+var n=readline.question("Enter the size of the array ");
 
 for(var i=0;i<n;i++){
 
@@ -12,7 +18,22 @@ for(var i=0;i<n;i++){
 
 }
 return arr;
+},
+/**
+ * @purpose : To generate the StringArray 
+ * @description : this method is used to generate the Stringarray of user choice elements
+                    and return the resultant array
+ * @param {empty Array} arr 
+ */
+ArrayInputString(arr){
+var n=readline.question("Enter the Size of the array ");
 
+for(var i=0;i<n;i++){
+
+    arr[i]=readline.question('');
+}
+
+return arr;
 
 },
 
@@ -268,16 +289,6 @@ tictoc(){
 var board=[[],[],[]];
 
 
-
-
-
-
-
-
-
-
-
-
 },
 createboard(board){
 
@@ -287,7 +298,180 @@ createboard(board){
 
     }
 
+},
+//Quadratic formulaa-----------------------------------------------------------------------------------
+quadratic(a,b,c){
+ var   delta = (b*b) - (4*a*c);
+console.log(delta);
+
+	// farmula for Quadratics....... 
+	var x1=(-b+Math.sqrt(delta))/(2*a);
+	var x2=(-b-Math.sqrt(delta))/(2*a);
+	console.log("your Quadratic formula for positive sign is "+x1);
+	
+	console.log("your Quadratic formula for negative sign is"+x2);
+
+},
+// WindChill--------------------------------------------------------------------------------------------
+windchill(t,v){
+    var W=35.74+(0.6215*t)+((0.4275*t)-35.75)*(Math.pow(v, 0.16)); 
+    
+    console.log("your formula value is "+w);
+},
+/**
+ * 
+ * Alhorithm program Started........................
+ * 
+ * 
+ */
+Anagram(st1,st2){
+
+if(st1.length!=st2.length){
+return false;
 }
+
+var ch=this.sort(st1);
+var ch1=this.sort(st2);
+
+if(ch===ch1){
+console.log("Your String is anagram ");
+}
+else{
+    console.log("Your String is Not anagram ");
+}
+//console.log(ch);
+},
+
+sort(st){
+    
+var ch=st.split('');
+for(var i=0;i<ch.length;i++){
+   for(var j=i+1;j<ch.length;j++){
+    if(ch[i]>ch[j]){
+        var temp=ch[i];
+        ch[i]=ch[j];
+        ch[j]=temp;
+    }
+}
+}
+var sort="";
+for(var i=0;i<ch.length;i++){
+var sort=sort+ch[i];
+}
+//console.log(sort);
+return sort;
+},
+// check Prime 1 to 1000------------------------------------------------------------------------------------
+
+Prime(){
+
+for(var i=1;i<1000;i++){
+
+    if(this.isprime(i)){
+        console.log(i);
+    }
+}
+},
+
+isprime(n){
+for(var i=2;i<n;i++){
+if(n%i==0){
+return false;
+}
+}
+return true;
+},
+//Prime anagram palindrome------------------------------------------------------------------------------
+primepoliana(){
+
+for(var i=1;i<1000;i++){
+
+if(this.isprime(i)){
+
+    this.palindrom(i);
+
+}
+
+}
+},
+palindrom(n){
+var t=n;
+
+var rev=0;
+while(n!=0){
+    var r=n%10;
+    
+ rev=rev*10+r;
+
+n=Math.floor(n/10);
+}
+if(rev==t){
+    console.log(t);
+}
+
+},
+//Binary Search------------------------------------------------------------------------------------------
+Binarysearch(arr,ele){
+
+    var l=0;
+    var h=arr.length-1;
+    while(l<=h){
+               
+        m=Math.floor((l+h)/2);
+       if(ele===arr[m]){
+           return m;
+       }
+      else if(ele<arr[m]){
+         h=m-1;
+
+       }
+       else if(ele>arr[m]){
+           l=m+1;
+       }
+       else{
+           return m;
+       }
+    }
+return -1;
+},
+Binarysearchstr(arr,ele){
+
+    var l=0;
+    var h=arr.length-1;
+    while(l<=h){
+     m=Math.floor((l+h)/2);
+     
+     if(ele==arr[m]){
+         return m;
+     }
+     else if(ele<arr[m]){
+
+        h=m-1;
+     }
+     else if(ele>arr[m]){
+         l=m+1;
+     }
+     else{
+         return m;
+     }
+    }
+},
+// Insertion sort-----------------------------------------------
+Insertionsort(arr){
+
+for(var i=1;i<arr.length;i++){
+var temp=arr[i];
+var j=i;
+    while( j>0 && arr[j-1]<temp){
+        arr[j]=arr[j-1];
+        j=j-1;
+    }
+    arr[j]=temp;
+}
+return arr;
+
+}
+
 
 
 }

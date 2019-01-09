@@ -6,8 +6,6 @@ const readline=require('readline-sync');
     var f=readline.question("HOW MANEY TIMES YOU WANT TO FLIP THE COIN ");
 
     Utility.flip(f);
-
-
 }
 flipcoin();
 
