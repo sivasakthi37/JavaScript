@@ -14,7 +14,7 @@ var n=readline.question("Enter the size of the array ");
 
 for(var i=0;i<n;i++){
 
-    arr[i]=Number(readline.question(""));
+    arr[i]=Number(readline.question(''));
 
 }
 return arr;
@@ -30,7 +30,7 @@ var n=readline.question("Enter the Size of the array ");
 
 for(var i=0;i<n;i++){
 
-    arr[i]=readline.question('');
+    arr[i]=readline.question("");
 }
 
 return arr;
@@ -455,6 +455,7 @@ Binarysearchstr(arr,ele){
          return m;
      }
     }
+    return -1;
 },
 // Insertion sort-----------------------------------------------
 Insertionsort(arr){
@@ -471,6 +472,7 @@ var j=i;
 return arr;
 
 },
+// bubble sort ---------------------------------------------------------
 BubbleSor(arr){
 
     for (let i = 0; i < arr.length; i++) {
@@ -487,6 +489,7 @@ BubbleSor(arr){
 
 return arr;
 },
+// Find number ---------------------------------------------------------
 Findnumber(left,right){
 
 var m=Math.floor((right+left)/2);
@@ -496,6 +499,7 @@ if(left<right){
 if(left==right-1){
 
     var c=readline.question("your number is "+left );
+
     if(c=="y"){
     return left;
       }
@@ -513,10 +517,7 @@ else if(y=="n"){
     m=this.Findnumber(left,m-1);
 }
 }
-
 return m;
-
-
 }
 
 }
