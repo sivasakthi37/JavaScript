@@ -462,7 +462,7 @@ Insertionsort(arr){
 for(var i=1;i<arr.length;i++){
 var temp=arr[i];
 var j=i;
-    while( j>0 && arr[j-1]<temp){
+    while( j>0 && arr[j-1]>temp){
         arr[j]=arr[j-1];
         j=j-1;
     }
@@ -470,8 +470,53 @@ var j=i;
 }
 return arr;
 
+},
+BubbleSor(arr){
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            
+        if(arr[i]>arr[j]){
+            var temp;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+    }
+
+return arr;
+},
+Findnumber(left,right){
+
+var m=Math.floor((right+left)/2);
+console.log(m);
+if(left<right){
+
+if(left==right-1){
+
+    var c=readline.question("your number is "+left );
+    if(c=="y"){
+    return left;
+      }
+   if(c=="n"){
+          return right;
+      }
+
+    }  
+   
+var y=readline.question("your number is in the range of "+m+" to "+right +" ");
+if(y=="y"){
+   m= this.Findnumber(m+1,right);
+}
+else if(y=="n"){
+    m=this.Findnumber(left,m-1);
+}
 }
 
+return m;
 
+
+}
 
 }
