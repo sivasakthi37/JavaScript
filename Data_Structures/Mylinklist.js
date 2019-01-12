@@ -42,8 +42,8 @@ class mylinklist {
         var temp = list.head;
         console.log("remove");
         while (temp != null) {
-            console.log(element+"== "+ temp.data);
-          console.log(element==temp.data.trim());
+           // console.log(element+"== "+ temp.data);
+         // console.log(element==temp.data.trim());
           
             // console.log('element: '+ typeof(element)+' ' + temp.data);
             // console.log('tempdata '+typeof(temp.data)+' ' +element);
@@ -51,24 +51,20 @@ class mylinklist {
                 console.log("remove3");
                 return true;
             }
-            else{
-                console.log('testing');
-            }
-            
             temp = temp.next;
         }
         return false;
     }
     remove(element) {
-
         var temp = this.head;
         var prev = this.head;
-        if (temp.data === element) {
+        console.log(temp.data);
+        if (temp.data.trim() == element) {
             this.head = temp.next;
             return true;
         }
-
-        while (temp.data != element) {
+        console.log(temp.data);
+        while (temp.data.trim() != element) {
             prev = temp;
             temp = temp.next;
         }

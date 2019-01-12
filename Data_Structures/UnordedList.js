@@ -24,7 +24,9 @@ if(list1.search(d, list1)){
 list1.remove(d);
 console.log(d);
 list1.display();
-
+}
+else{
+    
 }
 console.log("ENd")
 }
