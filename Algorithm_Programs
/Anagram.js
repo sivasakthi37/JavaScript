@@ -1,3 +1,17 @@
+/******************************************************************************
+ *  Execution       :   1. default node         cmd> node Anagram.js 
+ *                      2. if nodemon installed cmd> nodemon Anagram.js
+ * 
+ *  Purpose         : Determines whether a number `input String `is Anagram or not .
+ * 
+ *  @description    
+ * 
+ *  @file           : Anagram.js
+ *  @overview       : Anagram module to check if String is Anagram or not.
+ *  @author         : sivasakthi
+ *  @version        : 1.0
+ *  @since          : 07-01-2019
+ ******************************************************************************/
 const Utility=require('../Utility/Utility');
 const readline=require('readline-sync');
 

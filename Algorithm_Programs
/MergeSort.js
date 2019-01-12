@@ -1,3 +1,18 @@
+/******************************************************************************
+ *  Execution       :   1. default node         cmd> node MergeSort.js 
+ *                      2. if nodemon installed cmd> nodemon MergeSort.js
+ * 
+ *  Purpose         : MergeSort is used to Sort the Array element .
+ * 
+ *  @description    
+ * 
+ *  @file           : MergeSort.js
+ *  @overview       : MergeSort is used to Sort array Element.
+ *  @author         : sivasakthi
+ *  @version        : 1.0
+ *  @since          : 07-01-2019
+ *
+ ******************************************************************************/
 const utility=require('../Utility/Utility');
 const readline=require('readline-sync');
 

@@ -15,7 +15,7 @@
  *
  ******************************************************************************/
 
-
+const readf = require('fs');
 const readline = require('readline-sync');
 module.exports = {
 
@@ -34,6 +34,10 @@ module.exports = {
 
         }
         return arr;
+    },
+    readfile() {
+     var f=readf.readFileSync('text.txt','utf8');
+        return f;
     },
     /**
      * @purpose : To generate the StringArray 
@@ -179,10 +183,10 @@ module.exports = {
             if (b == r) {
                 win++;
                 amount = amount + r;
-                console.log(amount);
+                console.log("Your amount " + amount);
                 if (amount > goal) {
                     amount = amount - r;
-                    console.log(amount);
+                    console.log("Your amount is still " + amount);
                 }
             }
             else {
@@ -390,7 +394,7 @@ module.exports = {
         // farmula for Quadratics....... 
         var x1 = (-b + Math.sqrt(delta)) / (2 * a);
         var x2 = (-b - Math.sqrt(delta)) / (2 * a);
-        
+
         console.log("your Quadratic formula for positive sign is " + x1);
 
         console.log("your Quadratic formula for negative sign is" + x2);
@@ -408,7 +412,7 @@ module.exports = {
     },
     /**
      * 
-     * Alhorithm program Started......................................................
+     * Algorithm program Started......................................................
      * 
      * 
      */
@@ -494,6 +498,7 @@ module.exports = {
             }
 
         }
+
     },
     /**
      * @description:This method is used to find palindrome value
@@ -619,28 +624,28 @@ module.exports = {
      */
     Findnumber(left, right) {
 
-        var m = Math.floor((right + left) / 2);
+        var m = Math.floor(left + (right - left) / 2);
         console.log(m);
         if (left < right) {
-
+            var c;
             if (left == right - 1) {
 
-                var c = readline.question("your number is " + left);
+                c = readline.question("your number is ? " + left);
 
-                if (c == "y") {
+                if (c == 'y')
                     return left;
-                }
-                if (c == "n") {
+
+                if (c == 'n')
                     return right;
-                }
+
 
             }
 
-            var y = readline.question("your number is in the range of " + m + " to " + right + " ");
-            if (y == "y") {
-                m = this.Findnumber(m + 1, right);
+            c = readline.question("your number is in the range of " + m + " to " + right + " ");
+            if (c == "y") {
+                m = this.Findnumber(m, right);
             }
-            else if (y == "n") {
+            else if (c == "n") {
                 m = this.Findnumber(left, m - 1);
             }
         }
@@ -738,9 +743,9 @@ module.exports = {
 
             if (am / notes[i] > 0) {
 
-                console.log("number of " + notes[i] + " is " + am / notes[i]);
+                console.log("number of " + notes[i] + " is " + Math.floor(am / notes[i]));
 
-                count = count + am / notes[i];
+                count = count + Math.floor(am / notes[i]);
                 am = am % notes[i];
             }
         }
@@ -757,23 +762,140 @@ module.exports = {
         var y0 = y - Math.floor((14 - m) / 12);
         var x = y0 + Math.floor((y0 / 4)) - Math.floor((y0 / 100)) + Math.floor((y0 / 400));
         m0 = m + 12 * Math.floor((14 - m) / 12) - 2;
-        var d0 = (d
-            + x + Math.floor((31 * m0) / 12)) % 7;
-
+        var d0 = (d + x + Math.floor((31 * m0) / 12)) % 7;
         return d0;
+    },
+    /**
+     * @description:This method is used to find convertion of faCelsius to Fahrenheit,
+    Fahrenheit to Celsius
+    
+     */
+    CelsiustoFahrenheit(c) {
 
+        var F = ((c * 9) / 5) + 32;
+        return F;
+    },
+    FahrenheittoCelsius(F) {
+
+        var c = ((F - 32) * 5) / 9;
+
+        return c;
+    },
+    /**
+     * @description :This method is used to  find the monthly payment...
+     */
+    monthlypayment() {
+        var p = readline.question("Enter the principal loan amount ");
+        var Y = readline.question("Enter how many years ");
+        var R = readline.question(" Enter your percent interest ");
+
+        var n = 12 * Y;
+
+        var r = R / (12 * 100);
+        var d = Math.pow((1 + r), (-n));
+        var payment = (p * r) / (1 - (d));
+
+        console.log("The monthly payment is " + payment);
+    },
+    /**
+     * @description :this method is used to get squre root of non negative value.
+     * @param {number} num 
+     */
+    sqrt(num) {
+        if (num > 0) {
+            //formula 
+            var t = num;
+            var epsilon = 1e-15;
+            while (Math.abs(t - num / t) > epsilon * t) {
+                t = (num / t + t) / 2;
+            }
+            console.log("Squre root of non negative number is : ", t)
+        }
+        else {
+            console.log("Number should be positive ");
+        }
+    },
+    /**
+     * @description: This method is used to Covert the dicimal number to binary value.
+     * @param {number} num 
+     */
+    Tobinary(num) {
+
+        var str = "";
+        while (num != 0) {
+            var r = num % 2;
+            str = str + r;
+
+            num = Math.floor(num / 2);
+        }
+
+        return this.padding(str);
+    },
+    padding(str) {
+
+        for (var i = str.length; i < 32; i++) {
+
+
+            str = "0" + str;
+
+
+        }
+        return str;
 
     },
-/**
- * @description:This method is used to find convertion of faCelsius to Fahrenheit,
-Fahrenheit to Celsius
+    /**
+     * @description :This method is used to swap the nibbles 
+     * @param {number } num 
+     */
+    Nibbles(num) {
+        var str = this.Tobinary1(num);
+        var mid = Math.floor((str.length) / 2);
+        console.log("middle " + mid);
+        if (mid % 2 == 0) {
+            var arr1 = [];
+            for (var i = 0; i < mid; i++) {
 
- */
-TemperatureConvertion(){
+                arr1[i] = str[i];
 
+            }
+            console.log(arr1);
+            var arr2 = [];
+            var k = 0;
+            for (var j = str.length / 2; j < str.length; j++) {
+                arr2[k] = str[j];
+                k++;
+            }
+            console.log(arr2);
+            var s = "";
+            for (var i = 0; i < arr1.length; i++) {
+                s = s + arr1[i];
+            }
+            var s1 = "";
+            for (var i = 0; i < arr2.length; i++) {
+                s1 = s1 + arr2[i];
+            }
+            console.log(s);
+            console.log((s1));
+            console.log("Your Swapping nibbles is " + s1 + s)
+        }
+        else {
+            console.log("Your String can't able to split into two Strings ");
+        }
+    },
+    /**
+     * @description:This method is used to Convert the decimal value into binary value.
+     * @param {number} num 
+     */
+    Tobinary1(num) {
+        var str = "";
+        while (num != 0) {
+            var r = num % 2;
+            str = str + r;
 
-}
-
-
+            num = Math.floor(num / 2);
+        }
+        console.log("Str :" + str);
+        return str;
+    },
 }
 

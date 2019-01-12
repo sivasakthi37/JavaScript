@@ -1,3 +1,19 @@
+/******************************************************************************
+ *  Execution       :   1. default node         cmd> node Quadratic.js 
+ *                      2. if nodemon installed cmd> nodemon Quadratic.js
+ * 
+ *  Purpose         : To find quadratic value.
+ * 
+ *  @description    
+ * 
+ *  @file           : Quadratic.js
+ *  @overview       : Quadratic module to find the quadratic value.
+ *  @author         : sivasakthi
+ *  @version        : 1.0
+ *  @since          : 06-01-2019
+ *
+ ******************************************************************************/
+
 const  Utility=require('../Utility/Utility');
 const readline=require('readline-sync');
 

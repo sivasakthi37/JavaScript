@@ -1,3 +1,18 @@
+/******************************************************************************
+ *  Execution       :   1. default node         cmd> BinarySearchword.js 
+ *                      2. if nodemon installed cmd> nodemon BinarySearchword.js
+ * 
+ *  Purpose         : Determines whether a number `input number `is present in the Array or not .
+ * 
+ *  @description    
+ * 
+ *  @file           : BinarySearchword.js
+ *  @overview       : BInarySearchword module to check if WOrd is present inthe array or not.
+ *  @author         : sivasakthi
+ *  @version        : 1.0
+ *  @since          : 09-01-2019
+ *
+ ******************************************************************************/
 const Utility = require('../Utility/Utility');
 const readline = require('readline-sync');
 
