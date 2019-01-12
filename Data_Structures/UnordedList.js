@@ -17,5 +17,15 @@ for(var i=0;i<arr.length;i++){
 }
 
 list1.display();
+
+var d=readline.question(" ENter your Word to search ");
+if(list1.search(d, list1)){
+  //  console.log(search);
+list1.remove(d);
+console.log(d);
+list1.display();
+
+}
+console.log("ENd")
 }
 unordedlist();

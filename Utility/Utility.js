@@ -221,7 +221,7 @@ module.exports = {
         for (var i = 0; i < c; i++) {
             ar[i] = Math.floor(Math.random() * 9 + 1);
             for (var j = 0; j < i; j++) {
-                if (ar[i] == ar[j]) {
+          if (ar[i] == ar[j]) {
                     i--;
                 }
             }
