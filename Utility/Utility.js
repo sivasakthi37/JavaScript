@@ -39,6 +39,18 @@ module.exports = {
      var f=readf.readFileSync('text.txt','utf8');
         return f;
     },
+    readfile1() {
+        var f=readf.readFileSync('numbers.txt','utf8');
+           return f;
+       },
+    Writefile(filename,data){
+
+readf.writeFile(filename,data,(err)=>{
+
+    if(err) throw err;
+    
+})
+    },
     /**
      * @purpose : To generate the StringArray 
      * @description : this method is used to generate the Stringarray of user choice elements
