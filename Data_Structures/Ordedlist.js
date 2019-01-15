@@ -42,7 +42,7 @@ list1.display();
 var filename='numbers.txt';
 try{
 var search=readline.question("Enter your number to search ");
-
+if(isNaN(search)) throw "Your input in not a number plz enter String  ";
 if(search=="") throw "your enter empty element ";
 /*if(typeof search!=NaN ){
     throw "INVALID INPUT"
@@ -56,8 +56,8 @@ utility.Writefile(filename,data);
 list1.display();
 }
 else{
-list1.add(search);
-
+  list1.addInSequence2(search);
+  list1.sort();
 var data=list1.getdata();
 utility.Writefile(filename,data);
 
@@ -65,7 +65,7 @@ list1.display();
 }
 }
 catch(err){
-console.log("ERROR "+err);
+console.log("ERROR: "+err);
 }
 
 }

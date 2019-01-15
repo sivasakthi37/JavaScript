@@ -12,11 +12,12 @@
  *  @since          : 12-01-2019
  *
  ******************************************************************************/
-class node {
+class Node {
 /**
  * 
  * @param {data} data 
  */
+
     constructor(data) {
         this.data = data;
         this.next = null;
@@ -27,7 +28,7 @@ class mylinklist {
 
     add(data) {
 
-        var n = new node(data);
+        var n = new Node(data);
 
         if (this.head == null) {
             this.head = n;
@@ -93,6 +94,7 @@ this.cap++;
         var t = this.head;
         var disp ="";
 
+
         while (t != null) {
             disp = disp + t.data;
             if (t != null) {
@@ -124,6 +126,29 @@ this.cap++;
         
         } while (swapped)
     }
+    addInSequence2(item) {
+        var current;
+        var node = new Node(item);
+
+        /* Special case for head node */
+        if (this.head == null || this.head.data >= item) {
+            node.next = this.head;
+            this.head = node;
+            return;
+        }
+        else {
+
+            /* Locate the node before point of insertion. */
+            current = this.head;
+
+            while (current.next != null && current.next.data < item)
+                current = current.next;
+
+            node.next = current.next;
+            current.next = node;
+        }
+    }
+
 isEmpty() {
     if (this.head == null) {
         return true;
@@ -136,7 +161,6 @@ isEmpty() {
 size() {
     return this.capacity;
 }
-
 }
 module.exports = {
     mylinklist

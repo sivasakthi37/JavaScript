@@ -1,85 +1,71 @@
-/**
- * @description class Stack
+/******************************************************************************
  * 
- * @class Stack
- * @purpose Creates Stack contains various manipulation functions
- */
+ *  Purpose         : Stack is used to perfoming the operation of push and pop..
+ * 
+ *  @description    
+ * 
+ *  @file           : Stack.js
+ *  @overview       : Stack is used to push the element in the array and pop is used to pop the element in the array.
+ *  @author         : sivasakthi.
+ *  @version        : 1.0
+ *  @since          : 15-01-2019
+ *
+ ******************************************************************************/
 class Stack {
-    /**
-     * @description a Constructor
-     * intializes an array arr , top and size variable
-     */
     constructor() {
-
-        this.arr = [];
-        this.top = -1;
+        this.stk = [];
         this.size = 0;
+        this.capacity;
+        this.top = -1;
     }
-     /**
-     * @description add element to the stack
-     * @param {*} element 
-     */
-    push(element) {
-        //this.top = this.top + 1;
-        this.arr[++this.top] = element;
-        this.size++;
-        return;
-    }
-    /**
-     * @description remove element from the top of the stack
-     * @returns {*} element at the top
-     */
-    pop() {
-        if (this.top == -1) {
-            console.log("Stack underflowed");
-            return null;
-        } 
-            this.size--;
-            console.log("poped item: ",this.arr[this.top--])
-            return this.arr[this.top--];
-        
-    }
-    /**
-     * @description checks if stack is empty
-     */
-    isEmpty() {
-        if (this.top == -1) {
-            return true;
-        }
-        return false;
-    }
-    /**
-     * @description finds the size of the stack
-     * @returns {Number} returns size of the stack
-     */
-    size() {
-        return this.size;
-    }
-   
-    
-    /**
-     * @description find the element at the top
-     * @returns {*} element at the top 
-     */
-    peek() {
-        if (this.top == -1) {
-            console.log("Stack Underflowed ");
+    /*stack(capacity) {
+        this.capacity = capacity;
+        var stk = new stk[capacity];
+    }*/
+    push(ele) {
+        if (this.top == this.capacity - 1) {
+            console.log("Stack Overflow ");
             return;
         }
-        return this.arr[this.top];
+        this.size++;
+        this.stk[++this.top] = ele;
     }
-    /**
-     * @description Display the stack
-     */
-    display() {
-        if (this.top > -1) {
-            var str = "";
-            for (let i = 0; i < this.top + 1; i++) {
-                str = str + this.arr[i] + " ";
-            }
-            console.log(str);
+    pop() {
+        if (this.top == -1) {
+            console.log("Stack underFlow");
+            return;
         }
+        this.size--;
+        return this.stk[this.top--];
     }
+    peek() {
+        if (this.top == -1) {
+            console.log("No elements Found");
+            return;
+        }
+        console.log(this.stk[this.top]);
+    }
+    getsize() {
+        return this.size;
+    }
+    isEmpty() {
+        if (this.top == -1) {
+            console.log("Stack is empty");
+            return;
+        }
+        console.log("Stack is not empty");
+    }
+    dispaly() {
+        var string = "";
+        for (let i = 0; i <= this.top; i++) {
+            string = string + this.stk[i];
+            if (i < this.top) {
+                string = string + ",";
+            }
+        }
+        console.log(string);
+    }
+   
 }
 module.exports = {
     Stack
