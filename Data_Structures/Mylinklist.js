@@ -13,10 +13,10 @@
  *
  ******************************************************************************/
 class Node {
-/**
- * 
- * @param {data} data 
- */
+    /**
+     * 
+     * @param {data} data 
+     */
 
     constructor(data) {
         this.data = data;
@@ -24,7 +24,6 @@ class Node {
     }
 }
 class mylinklist {
-
 
     add(data) {
 
@@ -42,16 +41,21 @@ class mylinklist {
             t = t.next;
         }
         t.next = n;
-this.cap++;
+        this.cap++;
         return;
 
     }
     display() {
         var t = this.head;
-        var show ="";
-        while (t != null) {
-            show = show + t.data+" ";
+        var show = "";
 
+        while (t != null) {
+
+
+            show = show + t.data;
+            if (t.next != null) {
+                show = show + " ==> ";
+            }
             t = t.next;
         }
         console.log(show);
@@ -66,7 +70,7 @@ this.cap++;
             // console.log('element: '+ typeof(element)+' ' + temp.data);
             // console.log('tempdata '+typeof(temp.data)+' ' +element);
             if (element == temp.data.trim()) {
-                
+
                 return true;
             }
             temp = temp.next;
@@ -81,7 +85,7 @@ this.cap++;
             this.head = temp.next;
             return true;
         }
-       // console.log(temp.data);
+        // console.log(temp.data);
         while (temp.data.trim() != element) {
             prev = temp;
             temp = temp.next;
@@ -92,14 +96,14 @@ this.cap++;
     }
     getdata() {
         var t = this.head;
-        var disp ="";
+        var disp = "";
 
 
         while (t != null) {
             disp = disp + t.data;
             if (t != null) {
 
-                disp = disp +" ";
+                disp = disp + " ";
             }
 
             t = t.next;
@@ -108,13 +112,13 @@ this.cap++;
     }
     sort() {
         //console.log("sorted enter ");
-      //  var temp2 = null;
+        //  var temp2 = null;
         do {
             var swapped = 0;
             var t = this.head;
             while (t.next != null) {
 
-                if (parseInt (t.next.data) < parseInt (t.data)) {
+                if (parseInt(t.next.data) < parseInt(t.data)) {
 
                     var neww = t.next.data;
                     t.next.data = t.data;
@@ -123,7 +127,7 @@ this.cap++;
                 }
                 t = t.next;
             }
-        
+
         } while (swapped)
     }
     addInSequence2(item) {
@@ -149,18 +153,18 @@ this.cap++;
         }
     }
 
-isEmpty() {
-    if (this.head == null) {
-        return true;
+    isEmpty() {
+        if (this.head == null) {
+            return true;
+        }
     }
-}
-/**
- * @description find the present size of linkedlist
- * @returns {Number} size of linkedlist
- */
-size() {
-    return this.capacity;
-}
+    /**
+     * @description find the present size of linkedlist
+     * @returns {Number} size of linkedlist
+     */
+    size() {
+        return this.capacity;
+    }
 }
 module.exports = {
     mylinklist

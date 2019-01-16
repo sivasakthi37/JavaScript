@@ -68,6 +68,15 @@ readf.writeFile(filename,data,(err)=>{
         return arr;
 
     },
+    Arrayread(arr,read){
+      console.log("Enter "+read+" element");
+      for(var i=0;i<read;i++){
+          arr[i]=readline.question("");
+      }
+      return arr;
+    },
+
+
     /**
      * @purpose : TO replace the String
      * @description: this method is used for string replaec the perticulate place;
@@ -909,5 +918,48 @@ readf.writeFile(filename,data,(err)=>{
         console.log("Str :" + str);
         return str;
     },
+    findPrime(s1, s2) {
+        var count = 0, flag = 0, k = 0;
+        var prime = [];
+
+        for (var i = s1; i <= s2; i++) {
+            for (var j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    flag = 0;
+                    count++;
+                    break;
+                }
+                else {
+                    flag = 1;
+                }
+            }
+            if (flag == 1) {
+                prime[k++] = i;
+            }
+        }
+        return prime;
+    },
+
+    findAnaPrime(ii, jj) {
+        var primes = this.findPrime(ii, jj);
+        var n = primes.length;
+
+
+
+        var anaPrimes = [];
+        var h = 0;
+
+        for (let i = 0; i < primes.length - 1; i++) {
+            for (let j = i + 1; j < primes.length - 1; j++) {
+                if (this.checkAnagram2(primes[i], primes[j])) {
+                    anaPrimes[h++] = primes[i];
+                    anaPrimes[h++] = primes[j];
+                }
+
+            }
+        }
+        return anaPrimes;
+    }
+
 }
 
