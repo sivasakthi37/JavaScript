@@ -447,15 +447,17 @@ readf.writeFile(filename,data,(err)=>{
         if (st1.length != st2.length) {
             return false;
         }
+        let unsortedStr1 = "" + st1;
+        let unsortedStr2 = "" + st2;
 
-        var ch = this.sort(st1);
-        var ch1 = this.sort(st2);
+        var ch = this.sort(unsortedStr1);
+        var ch1 = this.sort(unsortedStr2);
 
         if (ch === ch1) {
-            console.log("Your String is anagram ");
+            return true;
         }
         else {
-            console.log("Your String is Not anagram ");
+            return false;
         }
         //console.log(ch);
     },
@@ -919,14 +921,13 @@ readf.writeFile(filename,data,(err)=>{
         return str;
     },
     findPrime(s1, s2) {
-        var count = 0, flag = 0, k = 0;
+        var flag = 0, k = 0;
         var prime = [];
 
         for (var i = s1; i <= s2; i++) {
             for (var j = 2; j < i; j++) {
                 if (i % j == 0) {
                     flag = 0;
-                    count++;
                     break;
                 }
                 else {
@@ -944,18 +945,15 @@ readf.writeFile(filename,data,(err)=>{
         var primes = this.findPrime(ii, jj);
         var n = primes.length;
 
-
-
         var anaPrimes = [];
         var h = 0;
 
-        for (let i = 0; i < primes.length - 1; i++) {
-            for (let j = i + 1; j < primes.length - 1; j++) {
-                if (this.checkAnagram2(primes[i], primes[j])) {
+        for (let i = 0; i < n - 1; i++) {
+            for (let j = i + 1; j < n - 1; j++) {
+                if (this.Anagram(primes[i], primes[j])) {
                     anaPrimes[h++] = primes[i];
                     anaPrimes[h++] = primes[j];
                 }
-
             }
         }
         return anaPrimes;

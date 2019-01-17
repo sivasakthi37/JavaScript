@@ -54,7 +54,7 @@ class mylinklist {
 
             show = show + t.data;
             if (t.next != null) {
-                show = show + " ==> ";
+                show =show + " ";
             }
             t = t.next;
         }

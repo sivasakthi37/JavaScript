@@ -21,11 +21,10 @@ var queues = () => {
     var que = new queue.myQueue;
     try {
         var n = readline.question("Enter how many persons are in the queue ");
-        if ( isNaN(n)) throw "Please Enter number Your entering wrong value  ";
+        if (isNaN(n)) throw "Please Enter number Your entering wrong value  ";
         for (var i = 0; i < n; i++) {
-            var name = readline.question("Enter your name ");
-            
-
+            var name = readline.question(" Enter your name ");
+            if(!isNaN(name)) throw " Please Enter number Your entering wrong value "
             que.enque(name);
         }
         que.display();
@@ -41,6 +40,7 @@ var queues = () => {
             if (cho == 1) {
 
                 var amount = readline.question("ENter Your withdraw Amount ");
+                if (isNaN(amount)) throw "Please Enter number Your entering wrong value  ";
                 var amount = parseInt(amount);
                 if (totalamount > amount) {
                     totalamount = totalamount - amount;
@@ -52,6 +52,7 @@ var queues = () => {
             }
             else if (cho == 2) {
                 var amount1 = readline.question("Enter the deposit amount ");
+                if (isNaN(amount1)) throw "Please Enter number Your entering wrong value  ";
                 var amount1 = parseInt(amount1);
                 totalamount = totalamount + amount1;
                 console.log("bank balance after depost " + totalamount);

@@ -24,6 +24,7 @@ function Stack()
     // var answer=Utility.callFile();
     // var str=answer[0];
     var str=readline.question("Enter your mathematical expression with parantheses ");
+
    var ch,i;
    
    for(i=0;i<str.length;i++)
