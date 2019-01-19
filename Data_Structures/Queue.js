@@ -13,12 +13,20 @@
  ******************************************************************************/
 class myQueue {
 
+    /**
+         * @description a Constructor
+         * intializes an array arr , front , rear and capacity variable
+         */
     constructor() {
         this.arr = [];
         this.capacity = 0;
         this.rear = this.front = -1;
 
     }
+    /**
+     * @description: This Enque is used to add the data in the queue.  
+     * @param {data} data 
+     */
     enque(data) {
         if (this.front == this.capacity) {
             console.log("Queue overflow ");
@@ -30,7 +38,10 @@ class myQueue {
         this.arr[++this.rear] = data;
         this.capacity++;
     }
-
+    /**
+     * @description :THIs dequeue is used to pop the data from the element.
+     *  
+     */
     dequeue() {
         if (this.front == -1) {
             console.log("Queue Underflowed");
@@ -44,7 +55,9 @@ class myQueue {
         return temp;
         // return this.arr.shift();
     }
-
+    /**
+     * @discription : Display the element in the queue 
+     */
     display() {
         if (this.front != this.rear) {
             var str = "[ ";
@@ -57,6 +70,9 @@ class myQueue {
             console.log("Queue is empty ");
         }
     }
+    /**
+     * @Discription :This Method is used to find the queue is empty or not 
+     */
     isempty() {
         if (this.rear == this.front == -1) {
             return true;
@@ -66,7 +82,10 @@ class myQueue {
         }
 
     }
-    size(){
+    /**
+     * @description: this size () is used  to find the size queue contain..
+     */
+    size() {
         return this.rear;
     }
 }

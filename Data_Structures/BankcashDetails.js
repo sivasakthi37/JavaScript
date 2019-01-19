@@ -20,10 +20,20 @@ const readline = require('readline-sync');
 var queues = () => {
     var que = new queue.myQueue;
     try {
+        /**
+         * @description :Get input from the user
+         */
         var n = readline.question("Enter how many persons are in the queue ");
+        /**
+         * @description : In case the user input is not a number It thow exception to catch block
+         */
         if (isNaN(n)) throw "Please Enter number Your entering wrong value  ";
+
         for (var i = 0; i < n; i++) {
             var name = readline.question(" Enter your name ");
+             /**
+         * @description : In case the user input is a number. It thow exception to catch block
+         */
             if(!isNaN(name)) throw " Please Enter number Your entering wrong value "
             que.enque(name);
         }
@@ -34,12 +44,15 @@ var queues = () => {
             console.log("------------cash counter---------------------");
             console.log("welcome " + que.dequeue() + " plz Enter your choice");
 
-            console.log("1.. withdraw \n 2..deposit  \n 3..balance enquery \n 4..no of persence in queue ");
+            console.log("1.. withdraw \n 2..deposit \n");
 
             var cho = readline.question("ENter your choice ");
             if (cho == 1) {
 
                 var amount = readline.question("ENter Your withdraw Amount ");
+                 /**
+         * @description : In case the user input is not a number It thow exception to catch block
+         */
                 if (isNaN(amount)) throw "Please Enter number Your entering wrong value  ";
                 var amount = parseInt(amount);
                 if (totalamount > amount) {
@@ -52,16 +65,13 @@ var queues = () => {
             }
             else if (cho == 2) {
                 var amount1 = readline.question("Enter the deposit amount ");
+                 /**
+         * @description : In case the user input is not a number It thow exception to catch block
+         */
                 if (isNaN(amount1)) throw "Please Enter number Your entering wrong value  ";
                 var amount1 = parseInt(amount1);
                 totalamount = totalamount + amount1;
                 console.log("bank balance after depost " + totalamount);
-            }
-            else if (cho == 3) {
-                console.log(" balance avalable on bank is " + totalamount);
-            }
-            else if (cho == 4) {
-                console.log("number of persence is queue " + n);
             }
             else {
                 throw "PLESER ENTER WITHIN THE OPTION";

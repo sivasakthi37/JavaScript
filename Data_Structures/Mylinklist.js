@@ -23,8 +23,14 @@ class Node {
         this.next = null;
     }
 }
+/**
+ * @description : This mylinklist class is used to perform the linklist operation. 
+ */
 class mylinklist {
-
+/**
+ * @description :This Method is used to add the data in the linklist.
+ * @param {data} data 
+ */
     add(data) {
 
         var n = new Node(data);
@@ -45,6 +51,9 @@ class mylinklist {
         return;
 
     }
+    /**
+     * @description: this function is used to display the linklist element 
+     */
     display() {
         var t = this.head;
         var show = "";
@@ -60,6 +69,11 @@ class mylinklist {
         }
         console.log(show);
     }
+    /**
+     * @description : This search method is used to find the element are in the value. 
+     * @param {element} element 
+     * @returns{boolean} true/false
+     */
     search(element) {
         var temp = this.head;
         // console.log("remove");
@@ -77,6 +91,10 @@ class mylinklist {
         }
         return false;
     }
+/**
+ * @description :This method is used to remove
+ * @param {element} element 
+ */
     remove(element) {
         var temp = this.head;
         var prev = this.head;
@@ -94,6 +112,9 @@ class mylinklist {
         prev.next = temp.next;
         return;
     }
+    /**
+     * @description:this Getdata method is used to get the element in the mylinklist.it return element
+     */
     getdata() {
         var t = this.head;
         var disp = "";
@@ -110,6 +131,9 @@ class mylinklist {
         }
         return disp;
     }
+    /**
+     * @description :this method is used to sort the element in the linklist
+     */
     sort() {
         //console.log("sorted enter ");
         //  var temp2 = null;
@@ -130,6 +154,10 @@ class mylinklist {
 
         } while (swapped)
     }
+    /**
+     * @description: This method is used to add the element in the linklist in the sorted way.. 
+     * @param {element} item 
+     */
     addInSequence2(item) {
         var current;
         var node = new Node(item);
@@ -152,7 +180,9 @@ class mylinklist {
             current.next = node;
         }
     }
-
+/**
+ * @description :This element is used to find the mylinklist is empty or not..
+ */
     isEmpty() {
         if (this.head == null) {
             return true;

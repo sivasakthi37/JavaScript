@@ -19,12 +19,18 @@ module.exports = {
     binarySearchTree() {
         try{
         var number = readline.question("Enter the how many casses : ");
+         /**
+         * @description : In case the user input is not a number It thow exception to catch block
+         */
         if(isNaN(number)) throw "PLZ ENTER INTEGER VALUE";
         var arr = [];
 
         console.log("Enter your integer value");
         for (var i = 0; i < number; i++) {
             arr[i] = readline.question('');
+             /**
+         * @description : In case the user input is not a number It thow exception to catch block
+         */
             if(isNaN(arr[i])) throw "PLZ ENTER THE NUMBER "
         }
          
@@ -39,10 +45,7 @@ module.exports = {
         console.log("ERROR :"+err);
         
     }
-
     },
-
-
     factorial(num) {
     
         var fact=1;

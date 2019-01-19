@@ -14,29 +14,33 @@ var linkedStack = require('./Stackusinglinklist');
 *  @since          : 17-01-2019
 *
 ******************************************************************************/
-function printAnaprimes()
-{
-var stackLink = new linkedStack.StackedLink;
+function printAnaprimes() {
+    var stackLink = new linkedStack.StackedLink;
 
-var Utility = require('../Utility/Utility');
-var show = require('util');
+    var Utility = require('../Utility/Utility');
+    var show = require('util');
 
-var anaPrimes = [[]];
+    var anaPrimes = [[]];
+    /**
+     * @description: this FindAnaPrime is used to find the primenumbers which are anagram.
+     */
+    anaPrimes = Utility.findAnaPrime(0, 1000);
 
-    anaPrimes = Utility.findAnaPrime(0,1000);
-   
-for(let i = 0 ; i < anaPrimes.length ; i++){
-    stackLink.push(anaPrimes[i]);
-}
-console.log();
-console.log("--------Before reversed--------");
-stackLink.display();
-var top =  stackLink.getHead();
-//console.log(top);
-console.log();
-console.log("------After Reversed ----------");
-stackLink.displayReverse(top);
-//console.log(stackLink.peek());
+
+    for (let i = 0; i < anaPrimes.length; i++) {
+        stackLink.push(anaPrimes[i]);
+    }
+    console.log();
+    console.log("--------Before reversed--------");
+    /**
+     * This display () is used to display the elements are in the Stacklinklist which we pass.
+     */
+    stackLink.display();
+    var top = stackLink.getHead();
+
+    console.log();
+    console.log("------After Reversed ----------");
+    stackLink.displayReverse(top);
+    //console.log(stackLink.peek());
 }
 printAnaprimes();
- 

@@ -23,12 +23,13 @@ function Stack()
     var st= new stackaccess.Stack;
     // var answer=Utility.callFile();
     // var str=answer[0];
+    try{
     var str=readline.question("Enter your mathematical expression with parantheses ");
-
    var ch,i;
    
    for(i=0;i<str.length;i++)
-   { ch=str.charAt(i);
+   { 
+       ch=str.charAt(i);
     
        if(ch=='(' || ch=='[' || ch=='{')
        {
@@ -60,6 +61,11 @@ function Stack()
    return true;
    }
    return false;
+}
+catch(err){
+console.log(err);
+
+}
 }
 var bol=Stack();
 

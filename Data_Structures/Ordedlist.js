@@ -13,60 +13,60 @@
  *  @since          : 13-01-2019
  *
  ******************************************************************************/
-const  utility=require('../Utility/Utility');
-const  readline=require('readline-sync');
-const list=require('../Data_Structures/Mylinklist');
+const utility = require('../Utility/Utility');
+const readline = require('readline-sync');
+const list = require('../Data_Structures/Mylinklist');
 
-var ordedlist=()=>{
+var ordedlist = () => {
 
-    var read=utility.readfile1();
-    
-    console.log("Readfile : "+read);
+    var read = utility.readfile1();// read the inpurt from the file..
 
-var st=read.split(' ');
-var list1=new list.mylinklist;
+    console.log("Readfile : " + read);
 
-for(var i=0;i<st.length;i++){
-list1.add(st[i]);
-    
-}
-console.log("Before sorting");
-console.log("-----------------------------------");
+    var st = read.split(' ');
+    var list1 = new list.mylinklist;
 
-list1.display();
-list1.sort();
-console.log("After sorting");
-console.log("-----------------------------------");
+    for (var i = 0; i < st.length; i++) {
+        list1.add(st[i]);
 
-list1.display();
-var filename='numbers.txt';
-try{
-var search=readline.question("Enter your number to search ");
-if(isNaN(search)) throw "Your input in not a number plz enter String  ";
-if(search=="") throw "your enter empty element ";
-/*if(typeof search!=NaN ){
-    throw "INVALID INPUT"
-}*/
-if(list1.search(search)){
+    }
+    console.log("Before sorting");
+    console.log("-----------------------------------");
 
-list1.remove(search);
-var data=list1.getdata();
-utility.Writefile(filename,data);
+    list1.display();
+    list1.sort();
+    console.log("After sorting");
+    console.log("-----------------------------------");
 
-list1.display();
-}
-else{
-  list1.addInSequence2(search);
-  list1.sort();
-var data=list1.getdata();
-utility.Writefile(filename,data);
+    list1.display();
+    var filename = 'numbers.txt';
+    try {
+        var search = readline.question("Enter your number to search ");
+        if (isNaN(search)) throw "Your input in not a number plz enter String  ";
+        if (search == "") throw "your enter empty element ";
+        /*if(typeof search!=NaN ){
+            throw "INVALID INPUT"
+        }*/
+        if (list1.search(search)) {
 
-list1.display();
-}
-}
-catch(err){
-console.log("ERROR: "+err);
-}
+            list1.remove(search);
+            var data = list1.getdata();
+            utility.Writefile(filename, data);
+
+            list1.display();
+        }
+        else {
+            list1.addInSequence2(search);
+            list1.sort();
+            var data = list1.getdata();
+            utility.Writefile(filename, data);
+
+            list1.display();
+        }
+    }
+    catch (err) {
+        console.log("ERROR: " + err);
+    }
 
 }
 ordedlist();

@@ -14,7 +14,9 @@ const bst=require('./BinarySearchTree');
 *
 ******************************************************************************/
 var bt=()=>{
-
+/**
+ * @description: make a call to BinarySerachTree file.
+ */
 bst.binarySearchTree();
 
 }

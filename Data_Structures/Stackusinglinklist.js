@@ -17,9 +17,9 @@ class Node {
 }
 
 class StackedLink {
-/**
-     * @description constructor initializes top
-     */
+    /**
+         * @description constructor initializes top
+         */
     constructor() {
         this.top = null;
     }
@@ -79,61 +79,7 @@ class StackedLink {
             console.log(show);
         }
     }
-    /**
-     * @description display possible days in a week
-     */
-    displayDays() {
 
-        if (this.top == null) {
-            console.log("Stack Underflowed");
-            return;
-        }
-        else {
-            var temp = this.top;
-            var show = "";
-            while (temp != null) {
-
-                show = show + temp.data;
-                if (temp.next != null) {
-                    show = show + "  "
-                }
-                temp = temp.next;
-            }
-            console.log(show);
-        }
-
-    }
-    /**
-     * @description Displays calender 
-     * @param {Number} d  
-     */
-    displayCalender(d) {
-
-        var t = this.top;
-
-
-        var count = 0;
-
-        while (t.data == " ") {
-            show.print("   ");
-
-            t = t.next;
-        }
-        while (t != null) {
-            count++;
-            show.print(" ", t.data);
-            if (t.data < 10) {
-                show.print(" ");
-            }
-
-
-            if (((count + d) % 7 == 0)) {
-                console.log("");
-            }
-            t = t.next;
-        }
-        count = 0;
-    }
     /**
      * @description Reverse the stack using linked list
      */
@@ -164,7 +110,6 @@ class StackedLink {
         show.print(top.data);
         if (top.next != top)
             show.print(" - ");
-
     }
     /**
      * @description get the top most item of the stack
@@ -174,7 +119,6 @@ class StackedLink {
         return this.top;
     }
 }
-
 module.exports = {
     StackedLink
 }

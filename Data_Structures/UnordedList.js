@@ -30,6 +30,9 @@ var list1=new list.mylinklist;
 for(var i=0;i<arr.length;i++){
     list1.add(arr[i]);
 }
+/**
+ * @ description :TO handle the Exception using try and catch block..
+ */
 try {
     console.log(("--------------Display element------------- "));
     

@@ -35,21 +35,34 @@ module.exports = {
         }
         return arr;
     },
+    /**
+     * @description:This method is used to read the input from the file.
+     */
     readfile() {
-     var f=readf.readFileSync('text.txt','utf8');
+        var f = readf.readFileSync('text.txt', 'utf8');
         return f;
     },
+    /**
+     * @description:This method is used to read the input from the file.
+     */
     readfile1() {
-        var f=readf.readFileSync('numbers.txt','utf8');
-           return f;
-       },
-    Writefile(filename,data){
+        var f = readf.readFileSync('numbers.txt', 'utf8');
+        return f;
+    },
+    /**
+  * @description:This method is used to Write the data from the file.
+  */
+    Writefile(filename, data) {
 
-readf.writeFile(filename,data,(err)=>{
+        readf.writeFile(filename, data, (err) => {
 
-    if(err) throw err;
-    
-})
+
+            if (err) {// in cae of file Writing it show any error it show throw message
+                console.log("ERROR : can't read your file " + err);
+
+            }
+
+        })
     },
     /**
      * @purpose : To generate the StringArray 
@@ -68,12 +81,23 @@ readf.writeFile(filename,data,(err)=>{
         return arr;
 
     },
-    Arrayread(arr,read){
-      console.log("Enter "+read+" element");
-      for(var i=0;i<read;i++){
-          arr[i]=readline.question("");
-      }
-      return arr;
+    /**
+     * @description :This array is get input from the user 
+     * @param {Array} arr 
+     * @param {number} read 
+     * @returns{array} arr
+     */
+    Arrayread(arr, read) {
+        console.log("Enter " + read + " element");
+        for (var i = 0; i < read; i++) {
+            arr[i] = readline.question("");
+
+            if (isNaN(arr[i])) {
+                console.log("ENter the Number value..");
+
+            }
+        }
+        return arr;
     },
 
 
@@ -242,7 +266,7 @@ readf.writeFile(filename,data,(err)=>{
         for (var i = 0; i < c; i++) {
             ar[i] = Math.floor(Math.random() * 9 + 1);
             for (var j = 0; j < i; j++) {
-          if (ar[i] == ar[j]) {
+                if (ar[i] == ar[j]) {
                     i--;
                 }
             }
@@ -920,6 +944,11 @@ readf.writeFile(filename,data,(err)=>{
         console.log("Str :" + str);
         return str;
     },
+    /**
+     * @description :This method is used If You pass Staring value and ending value means. it return prime number in the given range.
+     * @param {number} s1 
+     * @param {number} s2 
+     */
     findPrime(s1, s2) {
         var flag = 0, k = 0;
         var prime = [];
@@ -940,7 +969,11 @@ readf.writeFile(filename,data,(err)=>{
         }
         return prime;
     },
-
+    /**
+     * @description :This method is used If You pass Staring value and ending value it return prime number which are anagram in the range.
+     * @param {numbers} ii 
+     * @param {number} jj 
+     */
     findAnaPrime(ii, jj) {
         var primes = this.findPrime(ii, jj);
         var n = primes.length;

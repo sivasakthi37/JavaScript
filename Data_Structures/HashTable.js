@@ -14,16 +14,27 @@
 const list = require('../Data_Structures/Mylinklist');
 const show=require('util');
 class Hashtable {
+     /**
+         * @description a Constructor
+         * intializes the store variable Array.
+         */
     constructor() {
         this.store = [];
 
     }
+    /**
+     * @description :THis hash method is used to find the hash value where we have to store..
+     * @param {number} value 
+     */
     hash(value) {
 
         var index = value % 10;
         return index;
     }
-
+/**
+ * @description :this Addhash method is used to Add the value in the hash table..
+ * @param {value} value 
+ */
     addhash(value) {
         var index = this.hash(value);
 
@@ -38,7 +49,9 @@ class Hashtable {
             this.store[index].add(value);
         }
 
-    }
+    }/**
+     * @ description :This print() is used to print the value are present in the hash table 
+     */
     print(){
         for (let index = 0; index < 10; index++) {
              show.print(index + " : ");
@@ -51,9 +64,6 @@ class Hashtable {
 
         }
     }
-
-
-
 }
 module.exports={
     Hashtable

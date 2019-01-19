@@ -1,5 +1,5 @@
 var Utility = require('../Utility/Utility');
-var show = require('util');
+
 /***************************************************************************** 
 * 
 *  Purpose         : Find all prime number in range 0-1000.
@@ -14,21 +14,20 @@ var show = require('util');
 *
 ******************************************************************************/
 function primes() {
-    var primes = [[], [], [], [], [], [], [], [], [], []];
+    
+    var primes=[];
     var initial = 0;
     var final = 100;
+    /**
+     * @description : This loop is used to find the prime number in the range of 1000;
+     */
+   // primes.push([]);
     for (let i = 0; i < 10; i++) {
-        primes[i] = Utility.findPrime(initial, final);
+       primes[i] = Utility.findPrime(initial, final);
+       console.log("["+initial + "-" + final + "  ] : " + "[ " + primes[i] + " ]");
         initial = initial + 100;
         final = final + 100;
     }
-    var start = 0;
-    var end = 100;
-    for (let i = 0; i < 10; i++) {
-        show.print("["+start + "-" + end + "  ] : " + "[ " + primes[i] + " ]");
-        start = start + 100;
-        end = end + 100;
-        console.log();
-    }
+   
 }
 primes();

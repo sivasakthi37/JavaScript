@@ -12,6 +12,10 @@
  *
  ******************************************************************************/
 class Stack {
+    /**
+         * @description a Constructor
+         * intializes an array stk , top , capacity and size variable
+         */
     constructor() {
         this.stk = [];
         this.size = 0;
@@ -22,6 +26,10 @@ class Stack {
         this.capacity = capacity;
         var stk = new stk[capacity];
     }*/
+    /**
+     * @description :This push() is used to add the element tom stack 
+     * @param {data} ele 
+     */
     push(ele) {
         if (this.top == this.capacity - 1) {
             console.log("Stack Overflow ");
@@ -30,6 +38,9 @@ class Stack {
         this.size++;
         this.stk[++this.top] = ele;
     }
+    /**
+     * @description :This pop() is used to pop th element from the stack 
+     */
     pop() {
         if (this.top == -1) {
             console.log("Stack underFlow");
@@ -38,6 +49,9 @@ class Stack {
         this.size--;
         return this.stk[this.top--];
     }
+    /**
+     * @description:this peek() is used to get the first element in the stack
+     */
     peek() {
         if (this.top == -1) {
             console.log("No elements Found");
@@ -45,9 +59,15 @@ class Stack {
         }
         console.log(this.stk[this.top]);
     }
+    /**
+     * @description :This getsize is used to get the size of stack 
+     */
     getsize() {
         return this.size;
     }
+    /**
+     * @description :this method is used to find the stack is empty or not
+     */
     isEmpty() {
         if (this.top == -1) {
             console.log("Stack is empty");
@@ -55,6 +75,9 @@ class Stack {
         }
         console.log("Stack is not empty");
     }
+    /**
+     * @description :this method is used to display the value present in the stack
+     */
     dispaly() {
         var string = "";
         for (let i = 0; i <= this.top; i++) {
