@@ -11,22 +11,23 @@
 *  @since          : 17-01-2019.
 *
 ******************************************************************************/
-const utility=require('../Utility/Utility');
-const 
+const utility = require('../Utility/Utility');
+const queueln = require('./Queuelinklist');
 /**
  * @description: This function is used to find the prime value between 1 to 1000  and pass the value is in the queue  
  */
-var primeQueue=()=>{
+var primeQueue = () => {
     /**
      * @description:In this function we pass the range to  find the prime value
      */
-var arr=utility.findAnaPrime(0,1000);
+    var arr = utility.findAnaPrime(0, 1000);
 
-for(var i=0;i<arr.length;i++){
+    var que = new queueln.QueuedLinkedList;
+    for (var i = 0; i < arr.length; i++) {
 
-
-
-}
+        que.enque(arr[i]);
+    }
+    que.display();
 
 }
 primeQueue();
