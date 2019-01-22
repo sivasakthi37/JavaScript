@@ -7,6 +7,8 @@ var Regex = () => {
         var name = readline.question("ENter your name ");
         if(!isNaN(name)) throw "PLZ ENTER STRING VALUE";
         var fullname = readline.question("ENTER your full name ");
+        console.log();
+        
         if(!isNaN(fullname)) throw "PLZ ENTER STRING VALUE";
         var mob = readline.question("Enter your MObile number ");
         if(isNaN(mob)) throw "PLZ ENTER valid PHnumber VALUE";
@@ -18,6 +20,7 @@ console.log("------------------------------------------------------");
 
     } catch (error) {
         console.log(error);
+        Regex();
 
     }
 }

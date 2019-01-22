@@ -13,8 +13,10 @@
 ******************************************************************************/
 const fsy = require('fs');
 const readline = require('readline-sync');
-
 class inventry {
+    /**
+ * @description :Using this constructor initialize the value...
+ */
     constructor(name, pname, weight, kgprice) {
         this.name = name;
         this.productName = pname;
@@ -31,16 +33,23 @@ try {
     if (!isNaN(name)) throw "PLZ ENTER VALID NAME"
     console.log();
     var n = new inventry(name);
-
+    /**
+     * @description:This Function is used to  purchase the user..
+     */
     function costomer() {
         //console.log("Hai " + name);
 
         console.log("1..purchase.. 2..Exit..");
         console.log();
+        /**
+         * @Description :This Try block is used to handle the exception..
+         */
         try {
             var choice = readline.question("Enter your choice ");
             console.log(choice);
-
+            /**
+             * @ Description :This if condition is used to check input is number or not..
+             */
             if (isNaN(choice)) throw "PLZ ENTER NUMBER";
             if (choice < '1' || choice > '2') throw " ENter WithinRange of 1 to 2 ";
         }
@@ -59,7 +68,9 @@ try {
 
         }
     } costomer();
-
+    /**
+     * @description :This Function is used to purchace the user 
+     */
     function purchace1() {
 
 
@@ -68,17 +79,27 @@ try {
         console.log("1..rise.. 2..wheats.. 3.Pulses.. ");
 
         console.log();
-        var pname = readline.question("ENter your choice ");
+        /**
+         * @Description :This Try block is used to handle the exception..
+         */
         try {
+            /**
+             * @description:get the Product name from the user..
+             */
+            var pname = readline.question("ENter your choice ");
             if (pname < '1' || pname > '3') throw " ENter WithinRange of 1 to 3 ";
-
+/**
+ * @description:Get the kg value from the user 
+ */
             var kg = readline.question("How many kg u want ");
             console.log();
             if (isNaN(kg)) throw "PLZ ENTER NUMBER";
-            console.log(arr[pname - 1] + " per kg is " + pricekg[pname - 1]);
+            if (kg<1) throw "PLZ ENTER VALID KG VALUE";
+            console.log(arr[pname - 1] + " per kg is " + pricekg[pname - 1]+".");
 
-            console.log(arr[pname - 1] + " for " + kg + " kg is " + pricekg[pname - 1] * kg);
-            var price = (pricekg[pname - 1] * kg);
+            console.log(arr[pname - 1] + " for " + kg + " kg is " + pricekg[pname - 1] * kg+".");
+            console.log();
+            var price = (pricekg[pname - 1] * kg);// calculate the value of 
             var price1 = price;
             var cls = new inventry(n, arr[pname - 1], Number(kg), price1);
             data.push(cls);
@@ -105,14 +126,17 @@ try {
             }
         }
         catch (err) {
-            console.log("ERROR "+err);
+            console.log("ERROR " + err);
             purchace1();
 
         }
         ask();
     }
+    /**
+     * @description :This function is used to view the product details in which user purchase..
+     */
     function viewcart() {
-       // /home/brideit/Documents/SivaSakthi/oops/Jsonfiles/inventry.json
+        // /home/brideit/Documents/SivaSakthi/oops/Jsonfiles/inventry.json
         var data = fsy.readFileSync('../Jsonfiles/inventry.json');
         var data1 = JSON.parse(data);
 
@@ -143,24 +167,37 @@ try {
         ask();
      
     }*/
+    /**
+     * @description :This function is used to Ask the user to purchase again or not..
+     */
     function ask() {
 
-        console.log("DO YOU want to continue are u buy again anything? ");
-
+        console.log("Do you want to continue ? ");
         console.log("press 1..To purchace again.. 2..To go viewcart..3..To bill ");
         console.log();
-        var as = readline.question("ENter your choice ");
-        switch (as) {
-            case '1':
-                purchace1();
-                break;
-            case '2':
-                viewcart();
+         /**
+         * @Description :This Try block is used to handle the exception..
+         */
+        try {
+            var as = readline.question("ENter your choice ");
+            if (as < '1' || as > '3') throw " ENter WithinRange of 1 to 3 ";
+            switch (as) {
+                case '1':
+                    purchace1();
+                    break;
+                case '2':
+                    viewcart();
 
-                break;
-            case '3':
-                bill();
-                break;
+                    break;
+                case '3':
+                    bill();
+                    break;
+            }
+        }
+        catch (err) {
+            console.log("ERROR :" + err);
+            ask();
+
         }
     }
     function bill() {
@@ -170,7 +207,7 @@ try {
 
 
         console.log(data1);
-    
+
     }
     function Exit() {
         console.log("---------------------------Process is End--------------------------------");
