@@ -5,9 +5,8 @@ const readline = require('readline-sync');
 const file = require('fs');
 class Reg {
     /**
-     * 
-     * @param {id} id 
      * @param {name} name 
+     * @param {id} id
      * @param {symbol} symbol 
      * @param {phnumber} phnumber 
      */
@@ -17,12 +16,16 @@ class Reg {
         this.symbol = symbol;
         this.phnumber = phnumber;
     }
-
-
 }
 var regs = [];
+var patient1 = [];
 module.exports = {
-
+    /**
+     * @description:This method is used to change the perticular template from the string..
+     * @param {name} name 
+     * @param {fullname} fullname 
+     * @param {mobileno} mob 
+     */
     regex(name, fullname, mob) {
         var st1 = "Hello <<name>>,\nWe have your full name as <<full name>> in our system.\nyour contact number is 91-xxxxxxxxxx. \nPlease,let us know in case of any clarification \nThank you BridgeLabz 01/01/2016. ";
 
@@ -38,9 +41,14 @@ module.exports = {
 
         console.log(st1);
     },
-
+/**
+ * @description :This method is used to Register the user in the Clinique..
+ */
     regester() {
         try {
+            /**
+             * @description:get the details from the user to fill the registratin form..
+             */
             var name = readline.question("Enter your name ");
             if (!isNaN(name)) throw "PLZ ENTER STRING";
             var id = readline.question("Enter your ID ");
@@ -72,50 +80,100 @@ module.exports = {
             this.regester();
 
         }
-
-
     },
+    /**
+     * @description: get the data from the patient json file..
+     */
     getdatafrompatientsjson() {
         var Paitent = file.readFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Paitents.json');
         var Paitents = JSON.parse(Paitent);
         return Paitents;
     },
+    /**
+     * @description:get the data from the doctor json file..
+     */
     getdatafromdoctorjson() {
         var doctor = file.readFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Doctor.json');
         var doctors = JSON.parse(doctor);
         return doctors;
     },
+    /**
+     * @description:write the data from the doctor json file..
+     * @param {script} data 
+     */
+    writedatafromdoctorjson(data) {
+        var data1 = JSON.stringify(data);
+        file.writeFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Doctor.json', data1);
+
+    },
+    /**
+     * @description:Show doctor details to user.
+     */
     doctordetails() {
-
+        console.log("--------------------------DOCTOR DETAILS-----------------------");
         var doctors = this.getdatafromdoctorjson();
-        console.log(doctors);
-
-
-    },
-    paitentdetails() {
-
-        var patients=this.getdatafrompatientsjson();
-        console.log(patients);
+        for (const key in doctors.doctors) {
+                  console.log(JSON.stringify( doctors.doctors[key]));
+                  console.log();
+                  
+        }
         
-
-
-
     },
-    appointment() {
+    /**
+     * @description:Show paitent details to the patient..
+     */
+    paitentdetails() {
+        console.log("--------------------------Paitent DETAILS-----------------------");
+        var patients = this.getdatafrompatientsjson();
+        console.log(patients);
+    },
+    /**
+     * @description:TO store the appointment details to the doctor file...
+     * @param {user id} id 
+     */
+    appointment(id) {
+        var patient = this.getdatafrompatientsjson();
+        for (const key in patient.patients) {
+
+            if (patient.patients[key].id == id) {
+                patient1.push(patient.patients[key]);
+            }
+        }
+        var doctor = this.getdatafromdoctorjson();
+        console.log("--------------------------DOCTOR DETAILS-----------------------");
+        for (const key in doctor.doctors) {
+
+            console.log(JSON.stringify(doctor.doctors[key]));
+            console.log();
+
+        }
+        // console.log(JSON.stringify(doctor));
+
+        var did = readline.question("Enter the doctor id ");
+        var f = 1, r = 1;
+        for (const key in doctor.doctors) {
+            if (doctor.doctors[key].id == did) {
+                console.log("doctor file");
+                r = 0;
+                if (doctor.doctors[key].appoimentpatients.length < 5) {
+                    f = 0;
+                    doctor.doctors[key].no_of_paitents = doctor.doctors[key].no_of_paitents - 1;
+                    doctor.doctors[key].appoimentpatients.push(patient1);
+                    this.writedatafromdoctorjson(doctor);
+                    console.log("YOUR DETAILS ADDED IN DOCTOR FILE..");
+                }
+            }
+        }
+        if (f == 1) {
+            console.log("PER DAY ONLY 5 PATIENTS ARE AVILABLE YOU TRY NEXT DAY..");
+
+        }
+        if (r == 1) {
+            console.log("YOUR DOCTOR ID IS NOT MATCHING OLZ ENTER MACHING ID");
+            this.appointment();
+        }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 /* Commercial(costomer,company) {
      var q = readline.question("Are You new Costomer ? if YES PRESS 1.. IF NO Press 2..");

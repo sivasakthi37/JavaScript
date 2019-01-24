@@ -6,15 +6,24 @@
             "specialization": "eye",
             "availability": "10am-4pm",
             "no_of_paitents": 5,
-            "appoimentpatients":[]
+            "appoimentpatients": []
         },
         {
             "name": "vivek",
             "id": 2,
             "specialization": "heart",
             "availability": "10am-4pm",
-            "no_of_paitents": 5,
-            "appoimentpatients":[]
+            "no_of_paitents": 4,
+            "appoimentpatients": [
+                [
+                    {
+                        "name": "sugan",
+                        "id": 101,
+                        "age": 22,
+                        "mobilenumber": "7745587845"
+                    }
+                ]
+            ]
         },
         {
             "name": "anazar",
@@ -22,7 +31,7 @@
             "specialization": "brain",
             "availability": "10am-4pm",
             "no_of_paitents": 5,
-            "appoimentpatients":[]
+            "appoimentpatients": []
         },
         {
             "name": "sivasakthi",
@@ -30,7 +39,7 @@
             "specialization": "mbbs",
             "availability": "10am-4pm",
             "no_of_paitents": 5,
-            "appoimentpatients":[]
+            "appoimentpatients": []
         }
     ]
 }
