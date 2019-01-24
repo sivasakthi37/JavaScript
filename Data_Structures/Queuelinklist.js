@@ -84,6 +84,24 @@ class QueuedLinkedList {
         }
         console.log("");
     }
+    getdata() {
+        var t = this.front;
+        var count = 1;
+        var str="";
+        while (t != null) {
+            this.count++;
+          
+            if (count % 2 == 0) {
+                if (t.next != null) {
+                    str=str+ t.key+" ";
+                }
+                t = t.next;
+            }
+
+        }
+        return str;
+        console.log("");
+    }
 }
 module.exports = {
 

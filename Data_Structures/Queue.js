@@ -88,6 +88,25 @@ class myQueue {
     size() {
         return this.rear;
     }
+    getdata(){
+        if (this.front != this.rear) {
+            var str="";
+            for (let index = this.front; index <= this.rear; index++) {
+        
+                str = str + this.arr[index];
+             //   string = string + this.stk[i];
+            if (index <this.rear) {
+                str = str +" ";
+            }
+            }
+           // console.log("Elements in queue is ");
+            return str ;
+        } else {
+            return "Queue is empty ";
+        }
+
+
+    }
 }
 module.exports = {
     myQueue

@@ -88,19 +88,22 @@ try {
              */
             var pname = readline.question("ENter your choice ");
             if (pname < '1' || pname > '3') throw " ENter WithinRange of 1 to 3 ";
-/**
- * @description:Get the kg value from the user 
- */
+            /**
+             * @description:Get the kg value from the user 
+             */
             var kg = readline.question("How many kg u want ");
             console.log();
             if (isNaN(kg)) throw "PLZ ENTER NUMBER";
-            if (kg<1) throw "PLZ ENTER VALID KG VALUE";
-            console.log(arr[pname - 1] + " per kg is " + pricekg[pname - 1]+".");
+            if (kg < 1) throw "PLZ ENTER VALID KG VALUE";
+            console.log(arr[pname - 1] + " per kg is " + pricekg[pname - 1] + ".");
 
-            console.log(arr[pname - 1] + " for " + kg + " kg is " + pricekg[pname - 1] * kg+".");
+            console.log(arr[pname - 1] + " for " + kg + " kg is " + pricekg[pname - 1] * kg + ".");
             console.log();
             var price = (pricekg[pname - 1] * kg);// calculate the value of 
             var price1 = price;
+            /**
+             * c@description:pass the parameters to inventry class....
+             */
             var cls = new inventry(n, arr[pname - 1], Number(kg), price1);
             data.push(cls);
             if (data.length == 2) {
@@ -114,14 +117,21 @@ try {
             }
             else if (data.length == 3) {
                 var totalprice = data[0].totalprice + data[1].totalprice + data[2].totalprice;
+                /**
+             * c@description:pass the parameters to inventry class....
+             */
                 var cls = new inventry(n, data[0].productName + " + " + data[1].productName + " + " + arr[pname - 1], data[0].weight + " + " + data[1].weight + " + " + Number(kg), totalprice);
                 var jst = JSON.stringify(cls);
-
+                /**
+                 * @description: write the file to json..
+                 */
                 fsy.writeFileSync('../Jsonfiles/inventry.json', jst);
             }
             else {
                 var jst = JSON.stringify(cls);
-
+                /**
+                 * @description: write the file to json..
+                 */
                 fsy.writeFileSync('../Jsonfiles/inventry.json', jst);
             }
         }
@@ -175,12 +185,13 @@ try {
         console.log("Do you want to continue ? ");
         console.log("press 1..To purchace again.. 2..To go viewcart..3..To bill ");
         console.log();
-         /**
-         * @Description :This Try block is used to handle the exception..
-         */
+        /**
+        * @Description :This Try block is used to handle the exception..
+        */
         try {
             var as = readline.question("ENter your choice ");
             if (as < '1' || as > '3') throw " ENter WithinRange of 1 to 3 ";
+
             switch (as) {
                 case '1':
                     purchace1();
@@ -200,6 +211,9 @@ try {
 
         }
     }
+    /**
+     * @description:This bill method is used to give the bill to the  counter...
+     */
     function bill() {
 
         var data = fsy.readFileSync('../Jsonfiles/inventry.json');
@@ -209,12 +223,18 @@ try {
         console.log(data1);
 
     }
+    /**
+     * @description: this function is used to Exit the process.
+     */
     function Exit() {
         console.log("---------------------------Process is End--------------------------------");
 
         process.exit();
     }
 }
+/**
+ * @Description :This catch block is used to catch the error from the try block
+ */
 catch (err) {
     console.log(err);
 

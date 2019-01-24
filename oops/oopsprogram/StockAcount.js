@@ -42,7 +42,7 @@ class Transaction {
 }
 /**
  * 
- * @description:This class is used to store the data throw constructure..
+ * @description:This class is used to store the Registerdata throw constructor..
  */
 class Reg {
     /**
@@ -62,7 +62,7 @@ class Reg {
 
 }
 /**
- * @description:This Class is used to Store the 
+ * @description:This class is used to store the  Transactional data throw constructor.
  */
 class Transactionsell {
 
@@ -80,10 +80,13 @@ class Transactionsell {
 }
 var arr = [];
 var regs = [];
+/**
+ * @description : This class is used to maintain the details of Stocks
+ */
 class StackAcount {
-    constructor(name) {
-        this.name = name;
-    }
+    /**
+     * @description:this valueof is used to get the total price amount in the stock
+     */
     valueof() {
         console.log("hai");
 
@@ -97,6 +100,9 @@ class StackAcount {
         console.log("Value of ALL Share is $" + share);
 
     }
+    /**
+     * @description:This function is used to buy customer from the company
+     */
     buy() {
         var id = readfile.question("Please Enter Your Id ");
         var costomer = getdatafromcostomerjson();
@@ -123,6 +129,9 @@ class StackAcount {
 
         }
     }
+    /**
+     * @description:sell function is used to Sell customer shares to company..
+     */
     sell() {
 
         var id = readfile.question("Please Enter Your Id ");
@@ -150,12 +159,18 @@ class StackAcount {
 
         }
     }
+    /**
+     * @description:PrintTransaction is used to print the Transaction details from the database
+     */
     PrintTransaction() {
         var data = getdatafromTransactionjson();
 
         console.log(data);
 
     }
+    /**
+     * @description:This Regester function is used to Regster New customer.. 
+     */
     regester() {
         try {
             var id = readfile.question("Enter your ID ");
@@ -189,6 +204,9 @@ class StackAcount {
 
     }
 }
+/**
+ * @description:This function is used to get the comanydata from the company json file 
+ */
 function getdatafromcompanyjson() {
 
     var com = file.readFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Company.json');
@@ -197,12 +215,18 @@ function getdatafromcompanyjson() {
 
     return company;
 }
+/**
+ * @description:This function is used to get the customerdata from the customer json file 
+ */
 function getdatafromcostomerjson() {
     var cos = file.readFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Customer.json');
 
     var costomer = JSON.parse(cos);
     return costomer;
 }
+/**
+ * @description:This function is used to get the Transactiondata from the transaction json file 
+ */
 function getdatafromTransactionjson() {
     var tran = file.readFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Transaction.json');
 
@@ -217,21 +241,29 @@ function Writejs(data) {
 
 
 }
+/**
+ * @description:This function is used to write the Transactiondata to the transaction json file 
+ */
 function WriteTransaction(data) {
     var data1 = JSON.stringify(data);
     file.writeFileSync('/home/brideit/Documents/SivaSakthi/oops/Jsonfiles/Transaction.json', data1);
 
 
 }
+/**
+ * @description: this function is used to purchase the customer from the company..
+ * @param {amount} amount 
+ * @param {Symbol} symbol 
+ */
 function purchase(amount, symbol) {
     var company = getdatafromcompanyjson();
 
     //var index=company.shareholders.length-1;
-    var f=0;
+    var f = 0;
     for (const key in company.shareholders) {
         if (company.shareholders[key].symbol.trim() === symbol.trim()) {
             //console.log("Hai how are  u..");
-            f=1;
+            f = 1;
             if (amount < company.shareholders[key].no_of_shares) {
                 var amount1 = company.shareholders[key].no_of_shares - amount;
             }
@@ -274,21 +306,26 @@ function purchase(amount, symbol) {
             break;
 
         }
-       
+
     }
-      if (f==0) {
-             console.log("YOUR SYMBOL IS NOT MATCH ");
- 
-         }
+    if (f == 0) {
+        console.log("YOUR SYMBOL IS NOT MATCH ");
+
+    }
 }
+/**
+ * @description: this function is used to sell the customer to the company..
+ * @param {amount} amount 
+ * @param {Symbol} symbol 
+ */
 function selling(amount, symbol) {
 
     var company = getdatafromcompanyjson();
-var f=0;
+    var f = 0;
     for (const key in company.shareholders) {
         if (company.shareholders[key].symbol == symbol) {
             //console.log("Hai how are  u..");
-            f=1;
+            f = 1;
             var amount1 = company.shareholders[key].no_of_shares + parseInt(amount);
 
 
@@ -326,15 +363,17 @@ var f=0;
             break;
 
         }
-        
+
     }
-    if(f==0) {
+    if (f == 0) {
         console.log("YOUR SYMBOL IS NOT MATCH ");
-       var ste= new StackAcount();
-       ste.buy();
+        var ste = new StackAcount();
+        ste.buy();
     }
 }
-
+/**
+ * @description:export the class.. make it ass globle
+ */
 module.exports = {
     StackAcount
 }
