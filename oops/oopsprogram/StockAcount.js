@@ -104,28 +104,35 @@ class StackAcount {
      * @description:This function is used to buy customer from the company
      */
     buy() {
-        var id = readfile.question("Please Enter Your Id ");
-        var costomer = getdatafromcostomerjson();
-        var f = 0;
-        for (const key in costomer.user) {
-            // console.log(key);
-            //console.log( costomer.user[key].id+"=="+id);
-            // console.log("length " + costomer.user[(costomer.user.length)-1]);
-            //  var index=costomer.user.length-1;
-            if (costomer.user[key].id == id) {
-                f = 1;
-                console.log("YOUR ID IS MACHING ");
-                var amount = readfile.question("ENTER YOUR Share Amount ");
-                var symbol = readfile.question("Enter Your company Symbol ");
+        try {
+            var id = readfile.question("Please Enter Your Id ");
+            if (isNaN(id)) throw "PLZ ENTER VALID ID"
+            var costomer = getdatafromcostomerjson();
+            var f = 0;
+            for (const key in costomer.user) {
+                // console.log(key);
+                //console.log( costomer.user[key].id+"=="+id);
+                // console.log("length " + costomer.user[(costomer.user.length)-1]);
+                //  var index=costomer.user.length-1;
+                if (costomer.user[key].id == id) {
+                    f = 1;
+                    console.log("YOUR ID IS MACHING ");
+                    var amount = readfile.question("ENTER YOUR Share Amount ");
+                    var symbol = readfile.question("Enter Your company Symbol ");
 
-                purchase(amount, symbol);
-                break;
+                    purchase(amount, symbol);
+                    break;
+
+                }
+            }
+            if (f == 0) {
+                console.log("YOUR ARE NEW COUSTOMER PLZ REGESTER YOUR DETAILS");
+
 
             }
-        }
-        if (f == 0) {
-            console.log("YOUR ARE NEW COUSTOMER PLZ REGESTER YOUR DETAILS");
-
+        } catch (err) {
+            console.log("ERROR " + err);
+            this.buy();
 
         }
     }

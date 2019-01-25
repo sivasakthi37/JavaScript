@@ -60,7 +60,7 @@ try {
 
         }
         switch (choice) {
-
+        
             case '1': purchace1();
                 break;
             case '2': Exit();

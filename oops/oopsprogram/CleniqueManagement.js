@@ -48,12 +48,21 @@ function clenique() {
 
                     switch (c) {
                         case '1':
+                        /**
+                         * @description:This method is used to see the doctor details..  
+                         */
                             utility.doctordetails();
                             break;
                         case '2':
+                         /**
+                         * @description:This method is used to see the Patient details..  
+                         */
                             utility.paitentdetails();
                             break;
                         case '3':
+                         /**
+                         * @description:This method is used to get appoinment from doctors..  
+                         */
                             utility.appointment(id);
                             break;
                     }
