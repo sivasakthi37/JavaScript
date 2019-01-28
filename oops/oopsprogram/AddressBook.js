@@ -19,7 +19,6 @@ const file = require('fs');
 class AddAddress {
     constructor(firstname, lastname, idno, address) {
         this.firstname = firstname;
-
         this.lastname = lastname;
         this.idnumber = idno;
         this.addresss = address;
